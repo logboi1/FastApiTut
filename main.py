@@ -42,7 +42,7 @@ async def read_task(task_id: UUID):
 async def update_task(task_id: UUID, task_update: Task):
     for idx, task in enumerate(tasks):
         if task.id == task_id:
-            updated_task = task.copy(update=task_update.dict(exclude_unset=True))
+            updated_task = task.copy(update=task_update.model_dump(exclude_unset=True))
             tasks[idx] = updated_task
             return updated_task
 
